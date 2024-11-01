@@ -1,0 +1,42 @@
+import pygame, simpleGE, random
+
+class Taishi (simpleGE,Sprite):
+     def __init__(self,scene):
+        super().__init__(scene)   
+        self.setImage("Taishi.png")
+        self.setSize (50,70)
+        
+
+
+
+class Sussane (simpleGE,Sprite):
+    def __init__(self,scene):
+        super().__init__(scene)
+        self.setImage("Sussane.png")
+        self.setSize(50,70)
+        self.position =(320,400)
+
+
+    def process(self):
+        keysDown = pygame.key.got_pressed()
+        if keysDown == [pygame.K_LEFT]:
+            self.x -=5
+        if keysDown == [pygame.K_RIGHT]:
+            self.x +=5
+
+        
+class Game (simpleGE,Scene):
+    def __init__(self):
+        super().__init__()
+        self.setImage("heart.jpg")
+        self.sussane = Sussane(self)
+        self.sprites = [self.sussane]
+        self.taishi = Taishi(self)
+        self.sprites = [self.taishi]
+        
+def main():
+    game = Game()
+    game.start()
+    
+if __name__ == "__main__":
+    main()
