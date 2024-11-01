@@ -5,6 +5,11 @@ class Taishi (simpleGE,Sprite):
         super().__init__(scene)   
         self.setImage("Taishi.png")
         self.setSize (50,70)
+        self.minSpeed = 1
+        self.maxSpeed = 10
+
+    def reset(self):
+        
         
 
 
@@ -30,9 +35,10 @@ class Game (simpleGE,Scene):
         super().__init__()
         self.setImage("heart.jpg")
         self.sussane = Sussane(self)
-        self.sprites = [self.sussane]
         self.taishi = Taishi(self)
-        self.sprites = [self.taishi]
+        self.sprites = [self.sussane, self.taishi]
+    
+       
         
 def main():
     game = Game()
